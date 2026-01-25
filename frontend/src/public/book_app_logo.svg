@@ -1,0 +1,21 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Buch -->
+  <g transform="translate(100, 100)">
+    <!-- Linke Seite des Buches -->
+    <path d="M -40 -45 L -40 45 L 0 40 L 0 -40 Z" fill="#6b5d4f"/>
+    
+    <!-- Rechte Seite des Buches -->
+    <path d="M 0 -40 L 0 40 L 40 45 L 40 -45 Z" fill="#9d8b7a"/>
+    
+    <!-- Buchrücken Highlight -->
+    <path d="M -40 -45 L -40 45 L -35 43 L -35 -43 Z" fill="#8b7355" opacity="0.6"/>
+    
+    <!-- Lesezeichen -->
+    <path d="M 12 -45 L 12 15 L 18 10 L 24 15 L 24 -45 Z" fill="#a69080"/>
+    
+    <!-- Seiten-Details -->
+    <line x1="-38" y1="-35" x2="-38" y2="35" stroke="#faf8f3" stroke-width="0.8" opacity="0.4"/>
+    <line x1="-36" y1="-37" x2="-36" y2="37" stroke="#faf8f3" stroke-width="0.8" opacity="0.4"/>
+    <line x1="-34" y1="-39" x2="-34" y2="39" stroke="#faf8f3" stroke-width="0.8" opacity="0.4"/>
+  </g>
+</svg>

@@ -1,0 +1,26 @@
+<div class="books-overview">
+  <h2 class="title">Books Overview</h2>
+
+  @if (isLoading) {
+  <p class="status">Lade Bücher...</p>
+  } @if (error) {
+  <p class="status error">{{ error }}</p>
+  } @if (!isLoading && books.length === 0) {
+  <p class="status">Keine Bücher gefunden.</p>
+  }
+
+  <ul class="book-list">
+    @for (book of books; track book.bookId) {
+    <li class="book-card">
+      <div class="book-card__header">
+        <h3 class="book-title">{{ book.title }}</h3>
+        <span class="book-genre">{{ book.genre }}</span>
+      </div>
+
+      @if (book.description) {
+      <p class="book-description">{{ book.description }}</p>
+      }
+    </li>
+    }
+  </ul>
+</div>

@@ -4,4 +4,7 @@
 
 .content {
   padding: var(--content-padding);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

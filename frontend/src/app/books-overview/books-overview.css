@@ -67,3 +67,17 @@
   color: var(--text-color);
   line-height: 1.5;
 }
+.actions {
+  padding-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-style: italic;
+}
+
+.header-info {
+  float: left;
+  font-size: 14px;
+  color: var(--muted-color);
+  line-height: 32px;
+}

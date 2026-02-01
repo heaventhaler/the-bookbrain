@@ -1,28 +1,39 @@
 import {
   Component,
-  effect,
   ElementRef,
   inject,
-  OnInit,
+  signal,
   ViewChild,
 } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { Observable } from "rxjs";
 import { FormsModule } from "@angular/forms";
-import { Book, CreateBook } from "src/app/services/book";
+import { CreateBook } from "src/app/services/book";
 import { BookService } from "src/app/services/BookService";
+import { form, FormField, required } from "@angular/forms/signals";
+interface CreateBookFormdata {
+  title: string;
+  author: string;
+}
 
 @Component({
   selector: "app-books-overview",
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormField],
   templateUrl: "./books-overview.html",
   styleUrl: "./books-overview.scss",
 })
 export class BooksOverview {
   private booksService = inject(BookService);
   books = this.booksService.books;
-  title = "";
-  author = "";
+
+  bookCreateModel = signal<CreateBookFormdata>({
+    title: "",
+    author: "",
+  });
+
+  createBookForm = form(this.bookCreateModel, (schemaPath) => {
+    required(schemaPath.title);
+    required(schemaPath.author);
+  });
 
   @ViewChild("addBookDialog")
   addBookDialog!: ElementRef<HTMLDialogElement>;
@@ -31,14 +42,11 @@ export class BooksOverview {
     this.addBookDialog.nativeElement.showModal();
   }
 
-  closeAddBookDialog() {
-    this.addBookDialog.nativeElement.close();
-  }
-
-  onSaveBook(createBook: CreateBook) {
-    console.log("Creating book:", createBook);
+  onSubmit(event: Event) {
+    event.preventDefault();
+    const createBook: CreateBook = this.bookCreateModel();
     this.booksService.createBook(createBook).subscribe(() => {
-      this.closeAddBookDialog();
+      this.addBookDialog.nativeElement.close();
     });
   }
 }

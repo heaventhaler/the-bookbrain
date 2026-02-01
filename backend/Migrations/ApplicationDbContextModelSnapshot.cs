@@ -47,7 +47,7 @@ namespace backend.Migrations
 
                     b.HasKey("BookId");
 
-                    b.ToTable("Books");
+                    b.ToTable("Books", (string)null);
                 });
 
             modelBuilder.Entity("Character", b =>
@@ -80,7 +80,7 @@ namespace backend.Migrations
 
                     b.HasIndex("SpeciesId");
 
-                    b.ToTable("Characters");
+                    b.ToTable("Characters", (string)null);
                 });
 
             modelBuilder.Entity("Species", b =>
@@ -100,7 +100,7 @@ namespace backend.Migrations
 
                     b.HasKey("SpeciesId");
 
-                    b.ToTable("Species");
+                    b.ToTable("Species", (string)null);
                 });
 
             modelBuilder.Entity("Character", b =>

@@ -1,0 +1,41 @@
+/* Base Button */
+button {
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Primary Button */
+.primary {
+  background: var(--primary-color);
+  color: white;
+}
+
+.primary:hover {
+  opacity: 0.9;
+  box-shadow: 0 4px 12px rgba(48, 79, 64, 0.2);
+}
+
+/* Secondary Button */
+.secondary {
+  background: var(--secondary-color);
+  color: var(--text-color);
+  border: 1px solid var(--shadow-color);
+}
+
+.secondary:hover {
+  opacity: 0.7;
+}
+
+/* Button Group */
+.button-group {
+  display: flex;
+  gap: 12px;
+}
+
+.button-group button {
+  flex: 1;
+}

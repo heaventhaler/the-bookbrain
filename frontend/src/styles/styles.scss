@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+@use "./layout.scss";
+@use "./components/buttons.scss";
+@use "./components/dialogs.scss";
+@use "./components/cards.scss";
+@use "./components/forms.scss";
+
+/*
+button.primary {
+  padding: 10px;
+  border: solid 1px var(--primary-color);
+  background: var(--primary-color);
+  color: white;
+  border-radius: 8px;
+}*/

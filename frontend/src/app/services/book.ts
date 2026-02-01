@@ -5,3 +5,8 @@ export interface Book {
   genre: string;
   description?: string;
 }
+
+export interface CreateBook {
+  title: string;
+  author?: string;
+}

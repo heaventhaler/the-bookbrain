@@ -1,0 +1,34 @@
+<div class="books-overview">
+  <h2 class="title">Books Overview</h2>
+  <div class="actions">
+    <p class="header-info">{{ books().length }} books</p>
+    <button class="primary" type="button" (click)="openAddBookDialog()">
+      + New Book
+    </button>
+  </div>
+  <dialog #addBookDialog>
+    <h3>Add a new book</h3>
+    <form #bookForm (submit)="onSubmit($event)">
+      <label for="title">Title:</label>
+      <input type="text" id="title" [formField]="createBookForm.title" />
+
+      <label for="author">Author:</label>
+      <input type="text" id="author" [formField]="createBookForm.author" />
+      <div class="button-group">
+        <button type="button" class="secondary">Cancel</button>
+        <button type="submit" class="primary">Save Book</button>
+      </div>
+    </form>
+  </dialog>
+
+  <ul class="book-list">
+    @for (book of books(); track book.bookId) {
+    <li class="card">
+      <div class="card-header">
+        <h3 class="card-title">{{ book.title }}</h3>
+        <p class="card-subtitle">{{ book.author }}</p>
+      </div>
+    </li>
+    }
+  </ul>
+</div>

@@ -1,8 +1,7 @@
 <div class="books-overview">
   <h2 class="title">Books Overview</h2>
-  @if (books$ | async; as books) {
   <div class="actions">
-    <p class="header-info">{{ books.length }} books</p>
+    <p class="header-info">{{ books().length }} books</p>
     <button class="primary" type="button" (click)="openAddBookDialog()">
       + New Book
     </button>
@@ -11,10 +10,16 @@
     <h3>Add a new book</h3>
     <form #bookForm="ngForm" (ngSubmit)="onSaveBook(bookForm.value)">
       <label for="title">Title:</label>
-      <input type="text" id="title" name="title" required />
+      <input type="text" id="title" name="title" [(ngModel)]="title" required />
 
       <label for="author">Author:</label>
-      <input type="text" id="author" name="author" required />
+      <input
+        type="text"
+        id="author"
+        name="author"
+        [(ngModel)]="author"
+        required
+      />
 
       <div class="button-group">
         <button type="button" class="secondary" (click)="closeAddBookDialog()">
@@ -26,7 +31,7 @@
   </dialog>
 
   <ul class="book-list">
-    @for (book of books; track book.bookId) {
+    @for (book of books(); track book.bookId) {
     <li class="card">
       <div class="card-header">
         <h3 class="card-title">{{ book.title }}</h3>
@@ -35,5 +40,4 @@
     </li>
     }
   </ul>
-  }
 </div>

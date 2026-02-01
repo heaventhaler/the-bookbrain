@@ -66,16 +66,16 @@ public class BooksController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<BookReadDto>> CreateBook(BookCreateDto createDto)
+    public async Task<ActionResult<BookReadDto>> CreateBook([FromBody] BookCreateDto createDto)
     {
-           if (!ModelState.IsValid)
-    {
-        return BadRequest(ModelState);  
-    }
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);  
+        }
 
-    var createdBook = await _bookService.CreateAsync(createDto);
+        var createdBook = await _bookService.CreateAsync(createDto);
 
-    return CreatedAtAction(nameof(GetBook), new { id = createdBook.BookId }, createdBook); 
+        return CreatedAtAction(nameof(GetBook), new { id = createdBook.BookId }, createdBook); 
     }
 
     [HttpPut("{id}")]

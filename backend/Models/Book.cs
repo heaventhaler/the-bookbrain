@@ -11,4 +11,3 @@ public class Book
     public ICollection<Character> Characters { get; set; } = new List<Character>();
 
 }
-

@@ -19,8 +19,10 @@ import { BookService } from "src/app/services/BookService";
   styleUrl: "./books-overview.scss",
 })
 export class BooksOverview {
-  books$!: Observable<Book[]>;
   private booksService = inject(BookService);
+  books = this.booksService.books;
+  title = "";
+  author = "";
 
   @ViewChild("addBookDialog")
   addBookDialog!: ElementRef<HTMLDialogElement>;
@@ -34,14 +36,9 @@ export class BooksOverview {
   }
 
   onSaveBook(createBook: CreateBook) {
+    console.log("Creating book:", createBook);
     this.booksService.createBook(createBook).subscribe(() => {
       this.closeAddBookDialog();
-    });
-  }
-
-  constructor() {
-    effect(() => {
-      this.books$ = this.booksService.getAll();
     });
   }
 }

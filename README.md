@@ -7,9 +7,10 @@ Ziel: Charaktere verknüpfen (Beziehungen, Spezies), Ereignisse und Orte festhal
 Mobil-first, damit man beim Lesen schnell Notizen auf dem Handy machen kann.
 
 ## Technologien
-Backend: .NET, C# 
+Backend: ASP.NET Entity Framework, C# 
 Frontend: Angular 
 
-<img width="622" height="1036" alt="image" src="https://github.com/user-attachments/assets/67230468-b91e-43a5-98ca-ef2bfa953d56" />
+<img width="443" height="705" alt="image" src="https://github.com/user-attachments/assets/c28dd981-3e0f-44eb-98d6-eee783761f5c" />
+<img width="380" height="381" alt="image" src="https://github.com/user-attachments/assets/15f5e894-45ce-4f06-b397-a1fcbd5ba63a" />
 
 > ⚠️ Work in early Progress

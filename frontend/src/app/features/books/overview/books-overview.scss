@@ -1,0 +1,40 @@
+.books-overview {
+  width: 350px;
+  margin: auto;
+}
+
+.title {
+  font-size: 28px;
+  color: var(--primary-color);
+  margin-bottom: 16px;
+}
+
+.status {
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: var(--secondary-color);
+  border: 1px solid var(--shadow-color);
+  color: var(--muted-color);
+  margin-bottom: 16px;
+}
+
+.status.error {
+  border-color: #e09b9b;
+  background: #fff1f1;
+  color: #a70000;
+}
+
+.book-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.actions {
+  padding-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-style: italic;
+}

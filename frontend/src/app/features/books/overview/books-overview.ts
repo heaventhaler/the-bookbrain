@@ -6,11 +6,10 @@ import {
   ViewChild,
 } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { FormsModule } from "@angular/forms";
 import { CreateBook } from "src/app/services/book";
 import { BookService } from "src/app/services/BookService";
 import { form, FormField, required } from "@angular/forms/signals";
-import { Router, RouterLink } from "@angular/router";
+import { Router } from "@angular/router";
 interface CreateBookFormdata {
   title: string;
   author: string;
@@ -57,6 +56,7 @@ export class BooksOverview {
   }
 
   navigateToBook(bookId: number) {
+    console.log("📚 Navigating to book with ID:", bookId);
     this.router.navigate(["/books", bookId]);
   }
 }

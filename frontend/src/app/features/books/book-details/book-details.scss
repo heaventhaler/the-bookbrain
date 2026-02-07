@@ -1,0 +1,9 @@
+.book-details-card {
+  padding: 16px;
+  border-radius: 10px;
+  background: var(--secondary-color);
+  border: 1px solid var(--shadow-color);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

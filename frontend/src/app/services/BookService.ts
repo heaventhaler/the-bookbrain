@@ -14,6 +14,9 @@ export class BookService {
   private booksSignal = signal<Book[]>([]);
   readonly books = this.booksSignal.asReadonly();
 
+  private bookSignal = signal<Book | undefined>(undefined);
+  readonly book = this.bookSignal.asReadonly();
+
   constructor() {
     this.getAll();
   }
@@ -32,7 +35,9 @@ export class BookService {
     );
   }
 
-  getById(bookId: number): Observable<Book> {
-    return this.http.get<Book>(`${apiUrl}/books/${bookId}`);
+  getById(bookId: number) {
+    this.http.get<Book>(`${apiUrl}/books/${bookId}`).subscribe((book) => {
+      this.bookSignal.set(book);
+    });
   }
 }

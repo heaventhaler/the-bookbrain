@@ -12,7 +12,9 @@ import { BookService } from "src/app/services/BookService";
 export class BookDetails {
   private bookService = inject(BookService);
   private route = inject(ActivatedRoute);
+
   book = this.bookService.book;
+  loading = this.bookService.loading;
 
   constructor() {
     effect(() => {

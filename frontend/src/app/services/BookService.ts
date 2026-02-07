@@ -17,13 +17,18 @@ export class BookService {
   private bookSignal = signal<Book | undefined>(undefined);
   readonly book = this.bookSignal.asReadonly();
 
+  private loadingSignal = signal(false);
+  readonly loading = this.loadingSignal.asReadonly();
+
   constructor() {
     this.getAll();
   }
 
   getAll() {
+    this.loadingSignal.set(true);
     this.http.get<Book[]>(`${apiUrl}/books`).subscribe((books) => {
       this.booksSignal.set(books);
+      this.loadingSignal.set(false);
     });
   }
 
@@ -39,8 +44,11 @@ export class BookService {
   }
 
   getById(bookId: number) {
+    this.bookSignal.set(undefined);
+    this.loadingSignal.set(true);
     this.http.get<Book>(`${apiUrl}/books/${bookId}`).subscribe((book) => {
       this.bookSignal.set(book);
+      this.loadingSignal.set(false);
     });
   }
 }

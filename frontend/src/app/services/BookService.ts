@@ -1,6 +1,6 @@
 import { inject, Injectable, signal } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable, tap } from "rxjs";
+import { catchError, Observable, tap } from "rxjs";
 import { Book, CreateBook } from "./book";
 
 export const apiUrl = "http://localhost:5105/api";
@@ -28,9 +28,12 @@ export class BookService {
   }
 
   createBook(newBook: CreateBook) {
-    return this.http.post<CreateBook>(`${apiUrl}/books`, newBook).pipe(
-      tap(() => {
-        this.getAll();
+    return this.http.post<Book>(`${apiUrl}/books`, newBook).pipe(
+      tap((createdBook) => {
+        this.booksSignal.update((books) => [...books, createdBook]);
+      }),
+      catchError((error) => {
+        throw error;
       }),
     );
   }

@@ -50,13 +50,17 @@ export class BooksOverview {
   onSubmit(event: Event) {
     event.preventDefault();
     const createBook: CreateBook = this.bookCreateModel();
-    this.booksService.createBook(createBook).subscribe(() => {
-      this.addBookDialog.nativeElement.close();
+
+    this.booksService.createBook(createBook).subscribe({
+      next: (createdBook) => {
+        console.log("🎉 ID des neuen Buches:", createdBook.bookId);
+        this.addBookDialog.nativeElement.close();
+        this.router.navigate(["/books", createdBook.bookId]);
+      },
     });
   }
 
   navigateToBook(bookId: number) {
-    console.log("📚 Navigating to book with ID:", bookId);
     this.router.navigate(["/books", bookId]);
   }
 }

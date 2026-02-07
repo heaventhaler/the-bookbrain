@@ -1,11 +1,11 @@
 import { Component, effect, inject, input } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, RouterLink } from "@angular/router";
 import { Book } from "src/app/services/book";
 import { BookService } from "src/app/services/BookService";
 
 @Component({
   selector: "app-book-details",
-  imports: [],
+  imports: [RouterLink],
   templateUrl: "./book-details.html",
   styleUrls: ["./book-details.scss"],
 })

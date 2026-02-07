@@ -10,6 +10,7 @@ import { FormsModule } from "@angular/forms";
 import { CreateBook } from "src/app/services/book";
 import { BookService } from "src/app/services/BookService";
 import { form, FormField, required } from "@angular/forms/signals";
+import { Router, RouterLink } from "@angular/router";
 interface CreateBookFormdata {
   title: string;
   author: string;
@@ -23,6 +24,7 @@ interface CreateBookFormdata {
 })
 export class BooksOverview {
   private booksService = inject(BookService);
+  private router = inject(Router);
   books = this.booksService.books;
 
   bookCreateModel = signal<CreateBookFormdata>({
@@ -42,11 +44,19 @@ export class BooksOverview {
     this.addBookDialog.nativeElement.showModal();
   }
 
+  onCancel() {
+    this.addBookDialog.nativeElement.close();
+  }
+
   onSubmit(event: Event) {
     event.preventDefault();
     const createBook: CreateBook = this.bookCreateModel();
     this.booksService.createBook(createBook).subscribe(() => {
       this.addBookDialog.nativeElement.close();
     });
+  }
+
+  navigateToBook(bookId: number) {
+    this.router.navigate(["/books", bookId]);
   }
 }

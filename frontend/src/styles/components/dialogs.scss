@@ -10,6 +10,7 @@ dialog {
     0 20px 40px rgba(0, 0, 0, 0.12),
     0 4px 12px rgba(0, 0, 0, 0.06);
   width: 80%;
+  max-width: 350px;
 }
 
 dialog::backdrop {

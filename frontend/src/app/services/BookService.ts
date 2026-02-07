@@ -1,6 +1,6 @@
 import { inject, Injectable, signal } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable, tap } from "rxjs";
+import { catchError, Observable, tap } from "rxjs";
 import { Book, CreateBook } from "./book";
 
 export const apiUrl = "http://localhost:5105/api";
@@ -14,6 +14,9 @@ export class BookService {
   private booksSignal = signal<Book[]>([]);
   readonly books = this.booksSignal.asReadonly();
 
+  private bookSignal = signal<Book | undefined>(undefined);
+  readonly book = this.bookSignal.asReadonly();
+
   constructor() {
     this.getAll();
   }
@@ -25,10 +28,19 @@ export class BookService {
   }
 
   createBook(newBook: CreateBook) {
-    return this.http.post<CreateBook>(`${apiUrl}/books`, newBook).pipe(
-      tap(() => {
-        this.getAll();
+    return this.http.post<Book>(`${apiUrl}/books`, newBook).pipe(
+      tap((createdBook) => {
+        this.booksSignal.update((books) => [...books, createdBook]);
+      }),
+      catchError((error) => {
+        throw error;
       }),
     );
+  }
+
+  getById(bookId: number) {
+    this.http.get<Book>(`${apiUrl}/books/${bookId}`).subscribe((book) => {
+      this.bookSignal.set(book);
+    });
   }
 }

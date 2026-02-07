@@ -1,15 +1,25 @@
+@if (loading()) {
+<div class="loading-container">
+  <p>📚 Buch wird geladen...</p>
+</div>
+} @else if (book()) {
 <div>
   <button class="primary" [routerLink]="'/books'">Zurück</button>
   <div class="book-details-card card">
     <div class="book-header">
-      <h1 class="book-title">{{ book()?.title }}</h1>
-      <p class="book-author">von {{ book()?.author }}</p>
+      <h1 class="book-title">{{ book()!.title }}</h1>
+      <p class="book-author">von {{ book()!.author }}</p>
     </div>
     <div class="book-meta">
-      <span class="book-genre">Genre: {{ book()?.genre }}</span>
+      <span class="book-genre">Genre: {{ book()!.genre }}</span>
     </div>
     <div class="book-description">
-      <p>{{ book()?.description }}</p>
+      <p>{{ book()!.description }}</p>
     </div>
   </div>
 </div>
+} @else {
+<div class="error-container">
+  <p>❌ Buch konnte nicht geladen werden</p>
+</div>
+}

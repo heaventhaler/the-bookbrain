@@ -22,3 +22,8 @@ div {
 .character-profession {
   font-style: italic;
 }
+
+.character-header {
+  display: flex;
+  flex-direction: row;
+}

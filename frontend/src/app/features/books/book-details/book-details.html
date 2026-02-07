@@ -18,10 +18,13 @@
     }
   </div>
   <div class="character-display">
+    <div class="character-header">
+      <h2>Charaktere</h2>
+      <button class="primary">+ Neuer Charakter</button>
+    </div>
     @if (loading()) {
     <p>Lade Charaktere...</p>
     } @else if (book() && book()!.characters.length > 0) {
-    <h2>Charaktere</h2>
     <div class="character-list">
       @for (character of book()!.characters; track character.characterId) {
       <div class="character-card card">

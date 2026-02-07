@@ -17,4 +17,23 @@
     </div>
     }
   </div>
+  <div class="character-display">
+    @if (loading()) {
+    <p>Lade Charaktere...</p>
+    } @else if (book() && book()!.characters.length > 0) {
+    <h2>Charaktere</h2>
+    <div class="character-list">
+      @for (character of book()!.characters; track character.characterId) {
+      <div class="character-card card">
+        <h3 class="character-name">{{ character.name }}</h3>
+        <p class="character-profession">{{ character.profession }}</p>
+        <p class="character-description">{{ character.description }}</p>
+        <p class="character-description">{{ character.species?.name }}</p>
+      </div>
+      }
+    </div>
+    } @else {
+    <p>Keine Charaktere gefunden.</p>
+    }
+  </div>
 </div>

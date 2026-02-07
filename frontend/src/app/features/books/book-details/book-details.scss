@@ -12,3 +12,13 @@ div {
   gap: 12px;
   width: 80vw;
 }
+
+.character-list {
+  display: flex;
+  gap: 12px;
+  flex-direction: row;
+}
+
+.character-profession {
+  font-style: italic;
+}

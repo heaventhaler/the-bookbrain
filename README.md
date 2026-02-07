@@ -12,14 +12,14 @@ Frontend: Angular
 
 ## Todos
 ### Bugs
-- [ ] Renderfehler beim Laden der Details: altes Buch wird initial kurz geladen
+- [x] Renderfehler beim Laden der Details: altes Buch wird initial kurz geladen
 
 ### Funktinalitäten
 - [x] Details anzeigen
-- [ ] Charactere anzeigen
+- [x] Charactere anzeigen
 - [ ] Details bearbeiten
 - [ ] Charactere hinzufügen
-- [ ] Character details hinzufügen und bearbeiten
+- [ ] Charactere bearbeiten
 - [ ] Beziehungen zwischen Characteren abbilden
 - [ ] Spezies manuell hinzufügen können
 - [ ] Fehlerseite erstellen
